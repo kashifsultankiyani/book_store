@@ -19,7 +19,7 @@ export interface UserViewModel {
     email: string
 }
 
-export const User = sequelize.define<UserModel, UserAddModel>('user', {
+export const User = sequelize.define('user', {
     id: {
         type: Sequelize.INTEGER,
         autoIncrement: true,
