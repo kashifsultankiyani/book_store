@@ -6,14 +6,21 @@ import {Book} from './models/book';
 import {User} from './models/user';
 import {Author} from './models/author';
 
+import Router from "./routes";
+
+
 dotenv.config();
 
 const app: Express = express();
+app.use(express.json());
 const port = process.env.PORT || 3000;
 
 app.get("/", (req: Request, res: Response) => {
   res.send("This is my book store server.....");
 });
+
+app.use(Router);
+
 
 const initDB = async () => {
   await sequelize.authenticate();

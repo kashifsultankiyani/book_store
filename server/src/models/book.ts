@@ -1,5 +1,6 @@
 import Sequelize, { DataTypes } from 'sequelize'
 import { sequelize } from '../instances/sequelize'
+import { Author } from './author';
 
 export const Book = sequelize.define(
    "Book",
@@ -20,11 +21,10 @@ export const Book = sequelize.define(
          allowNull: false,
       },
 
-      // This will create a column for the author's name
-      authorName: {
-         type: DataTypes.STRING,
-         // remember allowNull defaults to true
-      },
+      authorId: {
+         allowNull: true,
+         type: DataTypes.UUID,
+       },
    },
    {
       // For the sake of clarity we specify our indexes
@@ -32,8 +32,10 @@ export const Book = sequelize.define(
    }
 );
 
+Book.hasOne(Author);
+
 // `sequelize.define` also returns the model
-console.log(Book === sequelize.models.Book); // true
+// console.log(Book === sequelize.models.Book); // true
 
 //module.exports = {
   // Book,
