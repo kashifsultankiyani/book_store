@@ -21,10 +21,10 @@ export const Book = sequelize.define(
          allowNull: false,
       },
 
-      authorId: {
-         allowNull: true,
-         type: DataTypes.UUID,
-       },
+      // authorId: {
+      //    allowNull: true,
+      //    type: DataTypes.UUID,
+      //  },
    },
    {
       // For the sake of clarity we specify our indexes
@@ -32,7 +32,7 @@ export const Book = sequelize.define(
    }
 );
 
-Book.hasOne(Author);
+// Book.hasOne(Author)
 
 // `sequelize.define` also returns the model
 // console.log(Book === sequelize.models.Book); // true

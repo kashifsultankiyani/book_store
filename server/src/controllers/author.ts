@@ -1,13 +1,13 @@
-import {Book} from "../models/book";
+import { Author } from "../models/author";
 
-export const createBook = (req: any, res: any) => {
+export const create= (req: any, res: any) => {
   // Call the create function on the Book model, and pass the data that you receive.
 
-  const { title, bookAuthId } = req.body;
-  Book.create({
-    title,
-    bookAuthId
-
+  const { firstName, lastName, email } = req.body;
+  Author.create({
+    firstName,
+    lastName,
+    email
   })
     .then((result: any) => {
       return res.json({
@@ -21,7 +21,7 @@ export const createBook = (req: any, res: any) => {
       });
     });
 };
-// const getBook = (req: any, res: any) => {
+// const get= (req: any, res: any) => {
 //   const id = req.query.id;
 //   BookModel.findByPK( id );
 //   .then((result: any) => {
@@ -35,9 +35,9 @@ export const createBook = (req: any, res: any) => {
 //   });
 // };
 
-export const getAllBooks = (req: any, res: any) => {
-  Book.findAll({
-     attributes: ["id", "title", "bookAuthId"],
+export const getAll = (req: any, res: any) => {
+  Author.findAll({
+     attributes: ["id", "firstName", "lastName", "email"],
     //  where: { title: req.body.title, authorId: req.body.author },
   })
      .then((result: any) => {
@@ -51,8 +51,8 @@ export const getAllBooks = (req: any, res: any) => {
      });
 };
 
-export const editBook = (req: any, res: any) => {
-  Book.update(
+export const edit = (req: any, res: any) => {
+  Author.update(
      {
         title: req.body.title, // updated title
      },
@@ -74,8 +74,8 @@ export const editBook = (req: any, res: any) => {
 };
 
 
-export const deleteBook = (req: any, res: any) => {
-  Book.destroy({
+export const del = (req: any, res: any) => {
+  Author.destroy({
      where: {
         id: req.query.id,
      },
