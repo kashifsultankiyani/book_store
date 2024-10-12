@@ -8,7 +8,7 @@ export const Author = sequelize.define<any>(
     {
         id: {
             allowNull: false,
-            autoIncrement: true,
+            // autoIncrement: true,
             defaultValue: Sequelize.UUIDV4,
             primaryKey: true,
             type: DataTypes.UUID,

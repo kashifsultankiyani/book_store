@@ -24,9 +24,9 @@ app.use(Router);
 
 const initDB = async () => {
   await sequelize.authenticate();
-  Book.sync({ alter: true });
-  User.sync({ alter: true });
   Author.sync({ alter: true });
+  Book.sync({ alter: true });
+  // User.sync({ alter: true });
 }
 
 initDB();
