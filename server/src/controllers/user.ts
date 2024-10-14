@@ -31,7 +31,7 @@ export const register =  async (req: any, res: any, next: any)=>{
         //     message: "Record created successfully!",
         //   });
 
-        const jsontoken = jsonwebtoken.sign({user: user}, process.env.SECRET_KEY, { expiresIn: '30m'} );
+        const jsontoken = jsonwebtoken.sign({user: user}, process.env.SECRET_KEY || "secrete", { expiresIn: '30m'} );
         res.cookie('token', jsontoken, { httpOnly: true, secure: true, SameSite: 'strict' , expires: new Date(Number(new Date()) + 30*60*1000) }); //we add secure: true, when using https.
  
  
